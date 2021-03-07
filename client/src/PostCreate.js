@@ -7,7 +7,7 @@ const PostCreate = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post('http://sebsonic2o.blog.com/posts', {
+    await axios.post('http://blog.sebsonic2o.org/posts/create', {
       title
     });
 

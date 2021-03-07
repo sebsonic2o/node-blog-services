@@ -7,7 +7,7 @@ const CommentCreate = ({ postId }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    await axios.post(`http://sebsonic2o.blog.com/posts/${postId}/comments`, {
+    await axios.post(`http://blog.sebsonic2o.org/posts/${postId}/comments`, {
       content
     });
 

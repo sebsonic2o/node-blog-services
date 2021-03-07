@@ -7,7 +7,7 @@ const PostList = () => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const res = await axios.get('http://sebsonic2o.blog.com/posts');
+    const res = await axios.get('http://blog.sebsonic2o.org/posts');
 
     setPosts(res.data);
   };

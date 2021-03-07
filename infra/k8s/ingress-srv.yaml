@@ -4,15 +4,37 @@ metadata:
   name: nginx-srv
   annotations:
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: sebsonic2o.blog.com
+    - host: blog.sebsonic2o.org
       http:
         paths:
-          - path: /posts
+          - path: /posts/create
             pathType: Prefix
             backend:
               service:
                 name: posts-clusterip-srv
                 port:
                   number: 4000
+          - path: /posts/?(.*)/comments
+            pathType: Prefix
+            backend:
+              service:
+                name: comments-clusterip-srv
+                port:
+                  number: 4001
+          - path: /posts
+            pathType: Prefix
+            backend:
+              service:
+                name: queries-clusterip-srv
+                port:
+                  number: 4002
+          - path: /?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: client-clusterip-srv
+                port:
+                  number: 3000
