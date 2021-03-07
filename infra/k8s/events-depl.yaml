@@ -16,3 +16,17 @@ spec:
         - name: events
           image: sebsonic2o/events:latest
           imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: events-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: events
+  ports:
+    - name: events
+      protocol: TCP
+      port: 4005
+      targetPort: 4005
